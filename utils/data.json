@@ -1,0 +1,20 @@
+{
+	"weapons": {
+		"bat": ":paperclip:",
+		"stick": ":paperclip:",
+		"sword": ":paperclip:",
+		"rock": ":paperclip:",
+		"pistol": ":paperclip:",
+		"rifle": ":paperclip:",
+		"pencil": ":paperclip:",
+		"keyboard": ":paperclip:",
+		"can": ":paperclip:",
+		"shield": ":paperclip:"
+	},
+
+	"armor": {
+		"helmet": ":paperclip:",
+		"chestplate": ":paperclip:",
+		"boots": ":paperclip:"
+	}
+}
