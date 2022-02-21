@@ -3,10 +3,12 @@ from discord.ext.commands import Cog, command, is_owner
 from discord import Embed
 import traceback, sys, os
 from io import StringIO
-from typing import Optional, Literal
+from typing import Optional, Literal, List
 
-from utils.items import *
-from utils.tools import *
+from discord.message import DeletedReferencedMessage
+
+from database import *
+from utils import *
 
 
 class Developer(Cog):
@@ -46,14 +48,32 @@ class Developer(Cog):
 				await ctx.send(embed=embed)
 
 
-	@command(hidden=True)
-	async def give_weapon(self, ctx, weapon : Literal[get_weapons_names()], rarity : str, power : int, health : Optional[int] = 100, member : Optional[discord.User] = None):
+	@command(aliases=['few'])
+	async def force_equip_weapon(self, ctx, weapon : str, rarity : str, power : int, health : Optional[int] = 100, member : Optional[discord.User] = None):
+		if not (weapon in get_weapons_names()):
+			await ctx.send(f"Not a weapon, {weapon}", delete_after=15)
+			return
+
 		discord_user = ctx.author if not (member) else member
 		
 		user = get_user(discord_user.id)
-		updated = user.update(weapon=Weapon(name=weapon, rarity=rarity, power=power, health=health))
+		new_weapon = Weapon(name=weapon, rarity=rarity, power=power, health=health)
+		user.update(weapon=new_weapon, strength=user.strength + new_weapon.power)
 
-		await ctx.send(f"Given '{weapon} `({rarity})`' to `{discord_user}`", delete_after=15)
+		await ctx.send(f"Given `{weapon} ({rarity})` to `{discord_user}`", delete_after=15)
+
+	@command(aliases=['fuw'])
+	async def force_unequip_weapon(self, ctx, weapon : str, member : Optional[discord.User] = None):
+		if not (weapon in get_weapons_names()):
+			await ctx.send(f"Not a weapon {weapon}", delete_after=15)
+			return
+
+		discord_user = ctx.author if not (member) else member
+
+		user = get_user(discord_user.id)
+		user.update(strength=user.strength - user.weapon.power, weapon=None)
+
+		await ctx.send(F"Took `{weapon}` from `{discord_user}`", delete_after=15)
 
 
 	@command(hidden=True)

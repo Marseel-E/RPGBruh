@@ -8,7 +8,14 @@ with open('utils/data.json', 'r') as f:
 	all_items = json.loads(f.read())
 
 def get_weapons_names(): return all_items['weapons'].keys()
+def get_armor_names(): return all_items['armor'].keys()
 def get_monsters_names(): return all_items['monsters'].keys()
+
+
+class Stats(BaseModel):
+	kills  : Optional[list] = []
+	deaths : Optional[list] = []
+	duals  : Optional[dict] = {}
 
 
 class Weapon(BaseModel):
@@ -19,6 +26,7 @@ class Weapon(BaseModel):
 
 	health : Optional[int] = 100
 
+
 class Armor(BaseModel):
 	name    : str
 	rarity  : str = "common"
@@ -26,6 +34,7 @@ class Armor(BaseModel):
 	defence : int = 10
 
 	health : Optional[int] = 100
+
 
 class Monster(BaseModel):
 	name     : str

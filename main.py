@@ -7,11 +7,12 @@ load_dotenv('.env')
 
 
 intents = Intents.default()
-bot = Bot(command_prefix=".", case_sensitive=True, intents=intents, help_command=None)
+bot = Bot(command_prefix=".", case_sensitive=True, intents=intents)
 
 @bot.event
 async def on_ready():
-	await bot.change_presence(status=Status.online, activity=Game("codeBot.exe"))
+	print("running")
+	await bot.change_presence(status=Status.online, activity=Game("RPGBruh.exe"))
 
 
 @bot.event
@@ -25,6 +26,5 @@ if __name__ == ('__main__'):
 			try: bot.load_extension(f"cogs.{file[:-3]}")
 			except Exception as e: print(f"[Main]: Failed to load '{file[:-3]}': {e}\n")
 			else: print(f"[{file[:-3]}]: Loaded..\n")
-
 
 bot.run(os.environ.get("DEV_TOKEN"))
