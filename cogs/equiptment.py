@@ -1,10 +1,10 @@
-from slash_util import Cog, slash_command, Context
 from discord import Embed, Interaction, ButtonStyle, SelectOption
 from discord.ui import View, button, Button, select, Select
+from slash_util import Cog, slash_command, Context
 import json
 
 from database import get_user
-from utils import get_weapons_names, Default, Color
+from utils import get_weapons_names, Default, Color, Icon
 
 
 class Use_select(Select):
@@ -30,7 +30,7 @@ class Use_select(Select):
 
 			new_strength_status = Icon.increase if (new_strength >= self.user.strength) else Icon.decrease
 
-			await interaction.response.send_message(f"Equipped {new_value.icon} {new_value.name} `({new_value.rarity})`\n:muscle: Strength: {new_strength} ({new_strength_status}{new_value.power}{new_strength_status})", ephemeral=True)
+			await interaction.response.send_message(f"Equipped {new_value.icon} {new_value.name} `({new_value.rarity})`\n{Icon.strength} Strength: {new_strength} ({new_strength_status}{new_value.power}{new_strength_status})", ephemeral=True)
 		
 		else: await interaction.response.send_message("soon", ephemeral=True)
 
@@ -66,7 +66,7 @@ class Unequip_weapon(Button):
 
 		self.user.update(equiptment=new_equiptment, weapon=None, strength=new_strength)
 
-		await interaction.response.send_message(f"Unequippted {weapon.icon} {weapon.name} `({weapon.rarity})`\n:muscle: Strength: {new_strength} ({Icon.decrease}{weapon.power}{Icon.decrease})", ephemeral=True)
+		await interaction.response.send_message(f"Unequippted {weapon.icon} {weapon.name} `({weapon.rarity})`\n{Icon.strength} Strength: {new_strength} ({Icon.decrease}{weapon.power}{Icon.decrease})", ephemeral=True)
 
 		self.view.stop()
 

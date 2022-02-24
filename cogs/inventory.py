@@ -1,5 +1,5 @@
-from slash_util import Cog, slash_command, Context
 from discord import Embed, Interaction, ButtonStyle
+from slash_util import Cog, slash_command, Context
 from discord.ui import View, button, Button
 
 from database import get_user

@@ -1,12 +1,12 @@
-from discord.enums import ButtonStyle
-from slash_util import Cog, slash_command, Context
 from discord import Embed, Interaction, ButtonStyle, User as DUser
+from slash_util import Cog, slash_command, Context
 from discord.ui import View, Button, button
-from random import randint
+from discord.enums import ButtonStyle
 from typing import Optional
+from random import randint
 
 from database import get_user, User
-from utils import Default
+from utils import Default, Icon
 
 
 from pydantic import BaseModel
@@ -61,7 +61,7 @@ class Dual_slash(Cog):
 			return
 
 		view = Ask_to_play(opponent)
-		msg = await ctx.send(f"{member.mention}, `{ctx.author}` invited you to a dual for :coin: {bet}", view=view)
+		msg = await ctx.send(f"{member.mention}, `{ctx.author}` invited you to a dual for {Icon.coins} {bet}", view=view)
 		await view.wait()
 
 		if not (view.accept):
@@ -102,7 +102,7 @@ class Dual_slash(Cog):
 		winner = await self.bot.fetch_user(int(dual.turn.ID))
 
 		await msg.delete()
-		await ctx.send(f":tada: {winner.mention} WON! :tada:\n+ :coins: {dual.bet}\n+ {exp_amount} Experience")
+		await ctx.send(f":tada: {winner.mention} WON! :tada:\n+ {Icon.coins} {dual.bet}\n+ {exp_amount} Experience")
 
 
 def setup(bot):

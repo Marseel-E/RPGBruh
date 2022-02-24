@@ -21,6 +21,12 @@ class _Icon:
 	def __init__(self):
 		self.increase = "<:increase:945438059644731442>"
 		self.decrease = "<:decrease:945438157929852948>"
+		self.level_up = ":tada:"
+		self.coins = ":coin:"
+		self.health = ":drop_of_blood:"
+		self.level = ":beginner:"
+		self.strength = ":muscle:"
+		self.defence = ":shield:"
 
 Icon = _Icon()
 

@@ -1,8 +1,8 @@
-import discord
 from slash_util import Cog, slash_command, describe, Context
+import discord
 
 from database import User, fetch_users, get_user
-from utils import Default
+from utils import Default, Icon
 
 
 class Profile_slash(Cog):
@@ -25,12 +25,12 @@ class Profile_slash(Cog):
 		embed.set_footer(text=f"Exp: {user.exp} / {round((user.level * 4.231) * 100)}")
 		embed.set_thumbnail(url=discord_user.display_avatar)
 
-		embed.add_field(name=":beginner: Level", value=f"{user.level}", inline=False)
-		embed.add_field(name=":coin: Coins", value=f"{user.coins}", inline=False)
+		embed.add_field(name=f"{Icon.level} Level", value=f"{user.level}", inline=False)
+		embed.add_field(name=f"{Icon.coins} Coins", value=f"{user.coins}", inline=False)
 
-		embed.add_field(name=":drop_of_blood: Health", value=user.health)
-		embed.add_field(name=":muscle: Strength", value=user.strength)
-		embed.add_field(name=":shield: Defence", value=user.defence)
+		embed.add_field(name=f"{Icon.health} Health", value=user.health)
+		embed.add_field(name=f"{Icon.strength} Strength", value=user.strength)
+		embed.add_field(name=f"{Icon.defence} Defence", value=user.defence)
 
 		if (user.weapon):
 			embed.add_field(name=f"Weapon:\n 	{user.weapon.icon} {user.weapon.name} `({user.weapon.rarity})`", value=f"```\nHealth: {user.weapon.health}%\nPower: {user.weapon.power}\n```", inline=False)

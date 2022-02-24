@@ -5,7 +5,7 @@ from asyncio import TimeoutError
 import json
 
 from database import get_user, Global_Marketplace, MarketplaceItem 
-from utils import get_weapons_names, Weapon, Armor, Default, Color
+from utils import get_weapons_names, Weapon, Armor, Default, Color, Icon
 
 
 class Buy_sell(View):
@@ -65,7 +65,7 @@ class Sell_select(Select):
 
 		Global_Marketplace.update(items=new_items)
 
-		await interaction.response.send_message(f"Listed {new_value.icon} {new_value.name} `({new_value.rarity})` for :coin: {data['price']}", ephemeral=True)
+		await interaction.response.send_message(f"Listed {new_value.icon} {new_value.name} `({new_value.rarity})` for {Icon.coins} {data['price']}", ephemeral=True)
 
 		self.view.stop()
 
@@ -100,9 +100,9 @@ class Buy_select(Select):
 		item_user = await self.bot.fetch_user(int(new_value.user.ID))
 		author_user = await self.bot.fetch_user(int(self.user.ID))
 
-		await item_user.send(f"{author_user} bought your {new_value.data.icon} {new_value.data.name} `({new_value.data.rarity})` for :coin: {new_value.price}")
+		await item_user.send(f"{author_user} bought your {new_value.data.icon} {new_value.data.name} `({new_value.data.rarity})` for {Icon.coins} {new_value.price}")
 
-		await interaction.response.send_message(f"Bought {item_user.display_name}'s {new_value.data.icon} {new_value.data.name} `({new_value.data.rarity})` for :coin: {new_value.price}", ephemeral=True)
+		await interaction.response.send_message(f"Bought {item_user.display_name}'s {new_value.data.icon} {new_value.data.name} `({new_value.data.rarity})` for {Icon.coins} {new_value.price}", ephemeral=True)
 
 		self.view.stop()
 
@@ -132,7 +132,7 @@ class Marketplace(Cog):
 				else: power_or_defence = f"Defence: {item.data.defence}"
 
 				item_user = await self.bot.fetch_user(int(item.user.ID))
-				embed.add_field(name=f"{item.data.icon} {item.data.name} `({item.data.rarity})` :coin: {item.price}", value=f"```\nHealth: {item.data.health}\n{power_or_defence}\n```By: **{item_user}**", inline=False)
+				embed.add_field(name=f"{item.data.icon} {item.data.name} `({item.data.rarity})` {Icon.coins} {item.price}", value=f"```\nHealth: {item.data.health}\n{power_or_defence}\n```By: **{item_user}**", inline=False)
 
 		if (len(embed.fields) <= 0): embed.description = "nothing to buy/sell"
 

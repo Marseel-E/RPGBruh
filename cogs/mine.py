@@ -1,6 +1,8 @@
 from slash_util import Cog, slash_command, Context, Modal, TextInput, TextInputStyle
 from discord.ext.commands import cooldown, cooldowns
+from datetime import datetime, timedelta
 from random import choices, randint
+from humanize import precisedelta
 from asyncio import TimeoutError
 from discord import Embed
 
@@ -14,9 +16,12 @@ class Mine(Cog):
 
 
 	@slash_command(guild_id=Default.test_server)
-	@cooldown(1, 150.0, cooldowns.BucketType)
 	async def mine(self, ctx : Context):
 		user = get_user(ctx.author.id)
+
+		if (datetime.utcnow() < user.mine_cooldown):
+			await ctx.send(f"Try again in {precisedelta(user.mine_cooldown - datetime.utcnow())}", ephemeral=True)
+			return
 
 		right_answer, equation = generate_equation()
 
@@ -27,11 +32,13 @@ class Mine(Cog):
 		try: interaction = await modal.wait(timeout=30.0)
 		except TimeoutError:
 			await ctx.send("You didn't respond in time.", ephemeral=True)
+			user.update(mine_cooldown=datetime.utcnow() + timedelta(minutes=5))
 			return
 		else: answer = modal.response['answer']
 
 		if ((answer == '') or (not (answer.isnumeric()) and not (answer.startswith('-'))) or (int(answer) != right_answer)):
 			await interaction.response.send_message(f"Wrong answer!", ephemeral=True)
+			user.update(mine_cooldown=datetime.utcnow() + timedelta(minutes=5))
 			return
 
 		ores_data = {
@@ -44,27 +51,28 @@ class Mine(Cog):
 			'emerald': 0.78125
 		}
 
-		ores = choices(list(ores_data.keys()), weights=list(ores_data.values()), k=randint(1,3))
+		ores = set(choices(list(ores_data.keys()), weights=list(ores_data.values()), k=randint(1,3)))
 
 		text = ""
 		new_inv = user.inventory
 		for ore in ores:
-			amount = round(randint(5,15) / (list(ores_data.keys()).index(ore) + 1))
+			random_amount = round(randint(5,15) / (list(ores_data.keys()).index(ore) + 1))
 
 			if (len(user.inventory) >= 1):
 				for item in user.inventory:
 					if item.name == ore:
-						amount += item.amount
+						amount = (random_amount + item.amount)
+						new_inv.pop(new_inv.index(item))
 						break
 
 			icon = all_items['items'][ore]
 
 			new_inv.append(Item(name=ore, icon=icon, amount=amount));
 
-			text += f"+ `{amount}` {icon} {ore}\n"
+			text += f"+ `{random_amount}` {icon} {ore}\n"
 
 		exp = randint(10,30)
-		user.update(inventory=new_inv, exp=user.exp + exp)
+		user.update(inventory=new_inv, exp=user.exp + exp, mine_cooldown=datetime.utcnow() + timedelta(minutes=5))
 
 		await interaction.response.send_message(f"Correct!\nExp: +{exp}\n{text}", ephemeral=True)
 

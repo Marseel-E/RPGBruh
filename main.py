@@ -1,9 +1,13 @@
-import os
 from discord import Intents, Status, Game
 from slash_util import Bot
+from random import randint
+import os
 
 from dotenv import load_dotenv
 load_dotenv('.env')
+
+from database import fetch_users, get_user
+from utils import Icon
 
 
 intents = Intents.default()
@@ -17,6 +21,19 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
+	if (message.author.bot): return
+
+	users = fetch_users()
+	if str(message.author.id) in users:
+		user = get_user(message.author.id)
+
+		if (user.exp >= (user.level * 4.231) * 100):
+			coins = randint(100,1000)
+
+			user.update(exp=0, level=user.level + 1, coins=user.coins + coins, health=100 + (50 * user.level), strength=10 * user.level, defence=10 * user.level)
+
+			await mesasge.channel.send(f"{Icon.level_up} LEVEL UP! {Icon.level_up}\n{Icon.level} Level: {user.level}\n{Icon.coins} Coins: {user.coins}\n{Icon.health} Health: {user.health}\n{Icon.strength} Strength: {user.strength}\n{Icon.defence} Defence: {user.defence}")
+
 	await bot.process_commands(message)
 
 

@@ -1,5 +1,5 @@
-from pydantic import BaseModel
 from typing import Optional, List, Union
+from pydantic import BaseModel
 from discord import Sticker
 import json
 

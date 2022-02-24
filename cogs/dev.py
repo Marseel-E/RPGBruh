@@ -1,10 +1,8 @@
-import discord, json, traceback, sys, os
 from discord.ext.commands import Cog, command, is_owner
+from typing import Optional, Literal, List
+import discord, json, traceback, sys, os
 from discord import Embed
 from io import StringIO
-from typing import Optional, Literal, List
-
-from discord.message import DeletedReferencedMessage
 
 from database import get_user, User, Guild, Marketplace, MarketplaceItem, Global_Marketplace, fetch_guilds, fetch_users, redis
 from utils import Color, get_weapons_names, Weapon, Icon, get_armor_names, get_monsters_names, get_items_names, Item, Stats, Weapon, Armor, Monster, all_items

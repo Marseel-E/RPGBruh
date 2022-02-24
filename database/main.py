@@ -10,6 +10,7 @@ redis = Redis(host=os.environ.get("DB_HOST"), port=os.environ.get("DB_PORT"), db
 
 from typing import Optional, List, Union
 from pprint import pprint
+from datetime import datetime
 
 from utils import Armor, Weapon, Stats, Item
 
@@ -34,6 +35,9 @@ class User(JsonModel):
 	inventory      : Optional[List[Item]] = []
 
 	in_dual        : Optional[bool] = False
+
+	mine_cooldown  : Optional[datetime] = datetime.utcnow()
+	chop_cooldown  : Optional[datetime] = datetime.utcnow()
 
 	class Meta:
 		database = redis

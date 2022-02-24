@@ -1,10 +1,10 @@
-import discord
-from discord.enums import DefaultAvatar
 from slash_util import Cog, slash_command, Context, Modal, TextInput, TextInputStyle
 from discord.ext.commands import is_owner
+from discord.enums import DefaultAvatar
 from discord import User as DUser
 from asyncio import TimeoutError
 from typing import Literal
+import discord
 
 from database import get_user
 from utils import get_weapons_names, get_armor_names, Weapon, Armor, Default
