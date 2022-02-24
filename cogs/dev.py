@@ -1,14 +1,13 @@
-import discord
+import discord, json, traceback, sys, os
 from discord.ext.commands import Cog, command, is_owner
 from discord import Embed
-import traceback, sys, os
 from io import StringIO
 from typing import Optional, Literal, List
 
 from discord.message import DeletedReferencedMessage
 
-from database import *
-from utils import *
+from database import get_user, User, Guild, Marketplace, MarketplaceItem, Global_Marketplace, fetch_guilds, fetch_users, redis
+from utils import Color, get_weapons_names, Weapon, Icon, get_armor_names, get_monsters_names, get_items_names, Item, Stats, Weapon, Armor, Monster, all_items
 
 
 class Developer(Cog):
@@ -18,34 +17,6 @@ class Developer(Cog):
 
 	async def cog_check(self, ctx):
 		return (await self.bot.is_owner(ctx.author))
-
-
-	@command(hidden=True, aliases=['python', 'eval', 'ev'])
-	async def py(self, ctx, unformatted : Optional[bool], *, cmd):
-		try: await ctx.message.delete()
-		except: pass
-
-		old_stdout = sys.stdout
-		redirected_output = sys.stdout = StringIO()
-		
-		try: exec(str(cmd))
-		except Exception as e:
-			traceback.print_stack(file=sys.stdout)
-			print(sys.exc_info())
-
-		sys.stdout = old_stdout
-		
-		if (unformatted):
-			msg = str(redirected_output.getvalue())
-			msg = [await ctx.send(msg[i:i+2000]) for i in range(0, len(msg), 2000)]
-		
-		else:
-			msg = str(redirected_output.getvalue())
-			
-			for i in range(0, len(msg), 2048):
-
-				embed = Embed(description=f"Input:\n```py\n{cmd}\n```\nOutput:\n```bash\n{msg[i:i+2000]}\n```", color=Color.default)
-				await ctx.send(embed=embed)
 
 
 	@command(aliases=['few'])
@@ -74,6 +45,34 @@ class Developer(Cog):
 		user.update(strength=user.strength - user.weapon.power, weapon=None)
 
 		await ctx.send(F"Took `{weapon}` from `{discord_user}`", delete_after=15)
+
+
+	@command(hidden=True, aliases=['python', 'eval', 'ev'])
+	async def py(self, ctx, unformatted : Optional[bool], *, cmd):
+		try: await ctx.message.delete()
+		except: pass
+
+		old_stdout = sys.stdout
+		redirected_output = sys.stdout = StringIO()
+		
+		try: exec(str(cmd))
+		except Exception as e:
+			traceback.print_stack(file=sys.stdout)
+			print(sys.exc_info())
+
+		sys.stdout = old_stdout
+		
+		if (unformatted):
+			msg = str(redirected_output.getvalue())
+			msg = [await ctx.send(msg[i:i+2000]) for i in range(0, len(msg), 2000)]
+		
+		else:
+			msg = str(redirected_output.getvalue())
+			
+			for i in range(0, len(msg), 2048):
+
+				embed = Embed(description=f"Input:\n```py\n{cmd}\n```\nOutput:\n```bash\n{msg[i:i+2000]}\n```", color=Color.default)
+				await ctx.send(embed=embed)
 
 
 	@command(hidden=True)

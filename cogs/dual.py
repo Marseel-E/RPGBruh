@@ -3,9 +3,10 @@ from slash_util import Cog, slash_command, Context
 from discord import Embed, Interaction, ButtonStyle, User as DUser
 from discord.ui import View, Button, button
 from random import randint
+from typing import Optional
 
-from utils import *
-from database import *
+from database import get_user, User
+from utils import Default
 
 
 from pydantic import BaseModel

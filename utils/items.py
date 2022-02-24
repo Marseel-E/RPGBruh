@@ -7,9 +7,26 @@ import json
 with open('utils/data.json', 'r') as f:
 	all_items = json.loads(f.read())
 
-def get_weapons_names(): return all_items['weapons'].keys()
-def get_armor_names(): return all_items['armor'].keys()
-def get_monsters_names(): return all_items['monsters'].keys()
+def get_weapons_names() -> list:
+	""" Returns a list of weapon names """
+	return all_items['weapons'].keys()
+def get_armor_names() -> list:
+	""" Returns a list of armor names """
+	return all_items['armor'].keys()
+def get_monsters_names() -> list:
+	""" Returns a list of monster names """
+	return all_items['monsters'].keys()
+def get_items_names() -> list:
+	""" Returns a list of item names """
+	return all_items['items'].keys()
+
+
+class Item(BaseModel):
+	name   : str = ""
+	icon   : Optional[str] = ":paperclip:"
+
+	data   : Optional[dict] = {}
+	amount : Optional[int] = 1
 
 
 class Stats(BaseModel):

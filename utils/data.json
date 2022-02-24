@@ -1,20 +1,89 @@
 {
 	"weapons": {
-		"bat": ":paperclip:",
-		"stick": ":paperclip:",
-		"sword": ":paperclip:",
-		"rock": ":paperclip:",
-		"pistol": ":paperclip:",
-		"rifle": ":paperclip:",
-		"pencil": ":paperclip:",
-		"keyboard": ":paperclip:",
-		"can": ":paperclip:",
-		"shield": ":paperclip:"
+		"wood_sword": ":paperclip:",
+		"stone_sword": ":paperclip:",
+		"copper_sword": ":paperclip:",
+		"iron_sword": ":paperclip:",
+		"gold_sword": ":paperclip:",
+		"ruby_sword": ":paperclip:",
+		"sapphire_sword": ":paperclip:",
+		"emerald_sword": ":paperclip:",
+
+		"wood_bow": ":paperclip:",
+		"stone_bow": ":paperclip:",
+		"copper_bow": ":paperclip:",
+		"iron_bow": ":paperclip:",
+		"gold_bow": ":paperclip:",
+		"ruby_bow": ":paperclip:",
+		"sapphire_bow": ":paperclip:",
+		"emerald_bow": ":paperclip:",
+
+		"wood_spear": ":paperclip:",
+		"stone_spear": ":paperclip:",
+		"copper_spear": ":paperclip:",
+		"iron_spear": ":paperclip:",
+		"gold_spear": ":paperclip:",
+		"ruby_spear": ":paperclip:",
+		"sapphire_spear": ":paperclip:",
+		"emerald_spear": ":paperclip:",
+
+		"wood_axe": ":paperclip:",
+		"stone_axe": ":paperclip:",
+		"copper_axe": ":paperclip:",
+		"iron_axe": ":paperclip:",
+		"gold_axe": ":paperclip:",
+		"ruby_axe": ":paperclip:",
+		"sapphire_axe": ":paperclip:",
+		"emerald_axe": ":paperclip:"
 	},
 
 	"armor": {
-		"helmet": ":paperclip:",
-		"chestplate": ":paperclip:",
-		"boots": ":paperclip:"
+		"wood_helmet": ":paperclip:",
+		"wood_chestplate": ":paperclip:",
+		"wood_boots": ":paperclip:",
+
+		"stone_helmet": ":paperclip:",
+		"stone_chestplate": ":paperclip:",
+		"stone_boots": ":paperclip:",
+
+		"copper_helmet": ":paperclip:",
+		"copper_chestplate": ":paperclip:",
+		"copper_boots": ":paperclip:",
+
+		"iron_helmet": ":paperclip:",
+		"iron_chestplate": ":paperclip:",
+		"iron_boots": ":paperclip:",
+
+		"gold_helmet": ":paperclip:",
+		"gold_chestplate": ":paperclip:",
+		"gold_boots": ":paperclip:",
+
+		"ruby_helmet": ":paperclip:",
+		"ruby_chestplate": ":paperclip:",
+		"ruby_boots": ":paperclip:",
+
+		"sapphire_helmet": ":paperclip:",
+		"sapphire_chestplate": ":paperclip:",
+		"sapphire_boots": ":paperclip:",
+
+		"emerald_helmet": ":paperclip:",
+		"emerald_chestplate": ":paperclip:",
+		"emerald_boots": ":paperclip:"
+	},
+
+	"monsters": {},
+
+	"items": {
+		"bread": ":paperclip:",
+		"water": ":paperclip:",
+
+		"wood": ":paperclip:",
+		"stone": ":paperclip:",
+		"copper": ":paperclip:",
+		"iron": ":paperclip:",
+		"gold": ":paperclip:",
+		"ruby": ":paperclip:",
+		"sapphire": ":paperclip:",
+		"emerald": ":paperclip:"
 	}
 }
