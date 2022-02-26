@@ -4,7 +4,7 @@ from slash_util import Cog, slash_command, Context
 import json
 
 from database import get_user
-from utils import get_weapons_names, Default, Color, Icon
+from utils import Data, Default, Color, Icon
 
 
 class Use_select(Select):
@@ -15,7 +15,7 @@ class Use_select(Select):
 		super().__init__(placeholder="Use", min_values=1, max_values=1, options=self.items)
 
 	async def callback(self, interaction : Interaction):
-		if (json.loads(self.values[0])['name'] in get_weapons_names()):
+		if (json.loads(self.values[0])['name'] in Data.fetch_names('weapons')):
 			new_value = Weapon(**json.loads(self.values[0]))
 
 			new_equiptment = self.user.equiptment

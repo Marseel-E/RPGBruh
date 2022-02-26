@@ -4,21 +4,47 @@ from discord import Sticker
 import json
 
 
+def decide_rarity(power: int, MIN: int, MAX: int) -> str:
+	""" Decides item rarity """
+	power_range = range(MIN, MAX, round(MAX / MIN))
+
+	rarities = {
+		'common': MIN,
+		'good': power_range[1],
+		'rare': power_range[3],
+		'epic': power_range[-2],
+		'legendary': power_range[-1],
+		'mythic': MAX
+	}
+
+	rarity = "common"
+	for name, max_power in rarities.items():
+		if power < max_power: break
+		rarity = name
+
+	return rarity
+
+
 with open('utils/data.json', 'r') as f:
 	all_items = json.loads(f.read())
 
-def get_weapons_names() -> list:
-	""" Returns a list of weapon names """
-	return all_items['weapons'].keys()
-def get_armor_names() -> list:
-	""" Returns a list of armor names """
-	return all_items['armor'].keys()
-def get_monsters_names() -> list:
-	""" Returns a list of monster names """
-	return all_items['monsters'].keys()
-def get_items_names() -> list:
-	""" Returns a list of item names """
-	return all_items['items'].keys()
+class _data:
+	def __init__(self):
+		self.data = all_items
+
+	def fetch_names(self, category : str) -> list:
+		""" Returns a list of keys for the given category """
+		return list(self.data[category].keys())
+
+	def fetch(self, item : str) -> dict:
+		""" Returns the data of the given item """
+		return [data[item] for category, data in self.data.items() if (item in data.keys())][0]
+
+	def get(self, item : str, key : str) -> str:
+		""" Returns the value of the key for the item """
+		return [data[item][key] for category, data in self.data.items() if (item in data.keys())][0]
+
+Data = _data()
 
 
 class Item(BaseModel):

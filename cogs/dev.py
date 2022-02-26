@@ -4,8 +4,8 @@ import discord, json, traceback, sys, os
 from discord import Embed
 from io import StringIO
 
-from database import get_user, User, Guild, Marketplace, MarketplaceItem, Global_Marketplace, fetch_guilds, fetch_users, redis
-from utils import Color, get_weapons_names, Weapon, Icon, get_armor_names, get_monsters_names, get_items_names, Item, Stats, Weapon, Armor, Monster, all_items
+from database import *
+from utils import *
 
 
 class Developer(Cog):
@@ -19,7 +19,7 @@ class Developer(Cog):
 
 	@command(aliases=['few'])
 	async def force_equip_weapon(self, ctx, weapon : str, rarity : str, power : int, health : Optional[int] = 100, member : Optional[discord.User] = None):
-		if not (weapon in get_weapons_names()):
+		if not (weapon in Data.fetch_names('weapons')):
 			await ctx.send(f"Not a weapon, {weapon}", delete_after=15)
 			return
 
@@ -33,7 +33,7 @@ class Developer(Cog):
 
 	@command(aliases=['fuw'])
 	async def force_unequip_weapon(self, ctx, weapon : str, member : Optional[discord.User] = None):
-		if not (weapon in get_weapons_names()):
+		if not (weapon in Data.fetch_names('weapons')):
 			await ctx.send(f"Not a weapon {weapon}", delete_after=15)
 			return
 

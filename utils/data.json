@@ -1,74 +1,214 @@
 {
 	"weapons": {
-		"wood_sword": ":paperclip:",
-		"stone_sword": ":paperclip:",
-		"copper_sword": ":paperclip:",
-		"iron_sword": ":paperclip:",
-		"gold_sword": ":paperclip:",
-		"ruby_sword": ":paperclip:",
-		"sapphire_sword": ":paperclip:",
-		"emerald_sword": ":paperclip:",
+		"wood_sword": {"icon": ":paperclip:", "power": [10,20], "recipe": {
+			"wood": 25
+		}},
+		"stone_sword": {"icon": ":paperclip:", "power": [10,30], "recipe": {
+			"wood": 25,
+			"stone": 25
+		}},
+		"copper_sword": {"icon": ":paperclip:", "power": [10,40], "recipe": {
+			"wood": 25,
+			"copper": 25
+		}},
+		"iron_sword": {"icon": ":paperclip:", "power": [10,50], "recipe": {
+			"wood": 25,
+			"iron": 25
+		}},
+		"gold_sword": {"icon": ":paperclip:", "power": [10,60], "recipe": {
+			"wood": 25,
+			"gold": 25
+		}},
+		"ruby_sword": {"icon": ":paperclip:", "power": [10,70], "recipe": {
+			"wood": 25,
+			"ruby": 25
+		}},
+		"sapphire_sword": {"icon": ":paperclip:", "power": [10,80], "recipe": {
+			"wood": 25,
+			"sapphire": 25
+		}},
+		"emerald_sword": {"icon": ":paperclip:", "power": [10,100], "recipe": {
+			"wood": 25,
+			"emerald": 25
+		}},
 
-		"wood_bow": ":paperclip:",
-		"stone_bow": ":paperclip:",
-		"copper_bow": ":paperclip:",
-		"iron_bow": ":paperclip:",
-		"gold_bow": ":paperclip:",
-		"ruby_bow": ":paperclip:",
-		"sapphire_bow": ":paperclip:",
-		"emerald_bow": ":paperclip:",
+		"wood_bow": {"icon": ":paperclip:", "power": [25,50], "recipe": {
+			"wood": 50
+		}},
+		"stone_bow": {"icon": ":paperclip:", "power": [25,75], "recipe": {
+			"wood": 50,
+			"stone": 50
+		}},
+		"copper_bow": {"icon": ":paperclip:", "power": [25,100], "recipe": {
+			"wood": 50,
+			"copper": 50
+		}},
+		"iron_bow": {"icon": ":paperclip:", "power": [25,125], "recipe": {
+			"wood": 50,
+			"iron": 50
+		}},
+		"gold_bow": {"icon": ":paperclip:", "power": [25,150], "recipe": {
+			"wood": 50,
+			"gold": 50
+		}},
+		"ruby_bow": {"icon": ":paperclip:", "power": [25,175], "recipe": {
+			"wood": 50,
+			"ruby": 50
+		}},
+		"sapphire_bow": {"icon": ":paperclip:", "power": [25,200], "recipe": {
+			"wood": 50,
+			"sapphire": 50
+		}},
+		"emerald_bow": {"icon": ":paperclip:", "power": [25,225], "recipe": {
+			"wood": 50,
+			"emerald": 50
+		}},
 
-		"wood_spear": ":paperclip:",
-		"stone_spear": ":paperclip:",
-		"copper_spear": ":paperclip:",
-		"iron_spear": ":paperclip:",
-		"gold_spear": ":paperclip:",
-		"ruby_spear": ":paperclip:",
-		"sapphire_spear": ":paperclip:",
-		"emerald_spear": ":paperclip:",
+		"wood_spear": {"icon": ":paperclip:", "power": [50,100], "recipe": {
+			"wood": 75
+		}},
+		"stone_spear": {"icon": ":paperclip:", "power": [50,150], "recipe": {
+			"wood": 75,
+			"stone": 75
+		}},
+		"copper_spear": {"icon": ":paperclip:", "power": [50,200], "recipe": {
+			"wood": 75,
+			"copper": 75
+		}},
+		"iron_spear": {"icon": ":paperclip:", "power": [50,250], "recipe": {
+			"wood": 75,
+			"iron": 75
+		}},
+		"gold_spear": {"icon": ":paperclip:", "power": [50,300], "recipe": {
+			"wood": 75,
+			"gold": 75
+		}},
+		"ruby_spear": {"icon": ":paperclip:", "power": [50,350], "recipe": {
+			"wood": 75,
+			"ruby": 75
+		}},
+		"sapphire_spear": {"icon": ":paperclip:", "power": [50,400], "recipe": {
+			"wood": 75,
+			"sapphire": 75
+		}},
+		"emerald_spear": {"icon": ":paperclip:", "power": [50,450], "recipe": {
+			"wood": 75,
+			"emerald": 75
+		}},
 
-		"wood_axe": ":paperclip:",
-		"stone_axe": ":paperclip:",
-		"copper_axe": ":paperclip:",
-		"iron_axe": ":paperclip:",
-		"gold_axe": ":paperclip:",
-		"ruby_axe": ":paperclip:",
-		"sapphire_axe": ":paperclip:",
-		"emerald_axe": ":paperclip:"
+		"wood_axe": {"icon": ":paperclip:", "power": [100,200], "recipe": {
+			"wood": 100
+		}},
+		"stone_axe": {"icon": ":paperclip:", "power": [100,300], "recipe": {
+			"wood": 100,
+			"stone": 100
+		}},
+		"copper_axe": {"icon": ":paperclip:", "power": [100,400], "recipe": {
+			"wood": 100,
+			"copper": 100
+		}},
+		"iron_axe": {"icon": ":paperclip:", "power": [100,500], "recipe": {
+			"wood": 100,
+			"iron": 100
+		}},
+		"gold_axe": {"icon": ":paperclip:", "power": [100,600], "recipe": {
+			"wood": 100,
+			"gold": 100
+		}},
+		"ruby_axe": {"icon": ":paperclip:", "power": [100,700], "recipe": {
+			"wood": 100,
+			"ruby": 100
+		}},
+		"sapphire_axe": {"icon": ":paperclip:", "power": [100,800], "recipe": {
+			"wood": 100,
+			"sapphire": 100
+		}},
+		"emerald_axe": {"icon": ":paperclip:", "power": [100,900], "recipe": {
+			"wood": 100,
+			"emerald": 100
+		}}
 	},
 
 	"armor": {
-		"wood_helmet": ":paperclip:",
-		"wood_chestplate": ":paperclip:",
-		"wood_boots": ":paperclip:",
+		"wood_helmet": {"icon": ":paperclip:", "defence": [15,30], "recipe": {
+			"wood": 15
+		}},
+		"wood_chestplate": {"icon": ":paperclip:", "defence": [20,40], "recipe": {
+			"wood": 20
+		}},
+		"wood_boots": {"icon": ":paperclip:", "defence": [10,20], "recipe": {
+			"wood": 10
+		}},
 
-		"stone_helmet": ":paperclip:",
-		"stone_chestplate": ":paperclip:",
-		"stone_boots": ":paperclip:",
+		"stone_helmet": {"icon": ":paperclip:", "defence": [15,45], "recipe": {
+			"stone": 25
+		}},
+		"stone_chestplate": {"icon": ":paperclip:", "defence": [20,60], "recipe": {
+			"stone": 30
+		}},
+		"stone_boots": {"icon": ":paperclip:", "defence": [10,30], "recipe": {
+			"stone": 20
+		}},
 
-		"copper_helmet": ":paperclip:",
-		"copper_chestplate": ":paperclip:",
-		"copper_boots": ":paperclip:",
+		"copper_helmet": {"icon": ":paperclip:", "defence": [15,60], "recipe": {
+			"copper": 35
+		}},
+		"copper_chestplate": {"icon": ":paperclip:", "defence": [20,80], "recipe": {
+			"copper": 40
+		}},
+		"copper_boots": {"icon": ":paperclip:", "defence": [10,40], "recipe": {
+			"copper": 30
+		}},
 
-		"iron_helmet": ":paperclip:",
-		"iron_chestplate": ":paperclip:",
-		"iron_boots": ":paperclip:",
+		"iron_helmet": {"icon": ":paperclip:", "defence": [15,75], "recipe": {
+			"iron": 45
+		}},
+		"iron_chestplate": {"icon": ":paperclip:", "defence": [20,100], "recipe": {
+			"iron": 50
+		}},
+		"iron_boots": {"icon": ":paperclip:", "defence": [10,50], "recipe": {
+			"iron": 40
+		}},
 
-		"gold_helmet": ":paperclip:",
-		"gold_chestplate": ":paperclip:",
-		"gold_boots": ":paperclip:",
+		"gold_helmet": {"icon": ":paperclip:", "defence": [15,90], "recipe": {
+			"gold": 55
+		}},
+		"gold_chestplate": {"icon": ":paperclip:", "defence": [20,120], "recipe": {
+			"gold": 60
+		}},
+		"gold_boots": {"icon": ":paperclip:", "defence": [10,60], "recipe": {
+			"gold": 50
+		}},
 
-		"ruby_helmet": ":paperclip:",
-		"ruby_chestplate": ":paperclip:",
-		"ruby_boots": ":paperclip:",
+		"ruby_helmet": {"icon": ":paperclip:", "defence": [15,105], "recipe": {
+			"ruby": 65
+		}},
+		"ruby_chestplate": {"icon": ":paperclip:", "defence": [20,140], "recipe": {
+			"ruby": 70
+		}},
+		"ruby_boots": {"icon": ":paperclip:", "defence": [10,70], "recipe": {
+			"ruby": 60
+		}},
 
-		"sapphire_helmet": ":paperclip:",
-		"sapphire_chestplate": ":paperclip:",
-		"sapphire_boots": ":paperclip:",
+		"sapphire_helmet": {"icon": ":paperclip:", "defence": [15,120], "recipe": {
+			"sapphire": 75
+		}},
+		"sapphire_chestplate": {"icon": ":paperclip:", "defence": [20,160], "recipe": {
+			"sapphire": 80
+		}},
+		"sapphire_boots": {"icon": ":paperclip:", "defence": [10,80], "recipe": {
+			"sapphire": 70
+		}},
 
-		"emerald_helmet": ":paperclip:",
-		"emerald_chestplate": ":paperclip:",
-		"emerald_boots": ":paperclip:"
+		"emerald_helmet": {"icon": ":paperclip:", "defence": [15,135], "recipe": {
+			"emerald": 85
+		}},
+		"emerald_chestplate": {"icon": ":paperclip:", "defence": [20,180], "recipe": {
+			"emerald": 90
+		}},
+		"emerald_boots": {"icon": ":paperclip:", "defence": [10,90], "recipe": {
+			"emerald": 80
+		}}
 	},
 
 	"monsters": {},

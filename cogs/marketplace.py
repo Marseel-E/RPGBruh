@@ -5,7 +5,7 @@ from asyncio import TimeoutError
 import json
 
 from database import get_user, Global_Marketplace, MarketplaceItem 
-from utils import get_weapons_names, Weapon, Armor, Default, Color, Icon
+from utils import Data, Weapon, Armor, Default, Color, Icon
 
 
 class Buy_sell(View):
@@ -52,7 +52,7 @@ class Sell_select(Select):
 			return
 		else: data = modal.response
 
-		if (json.loads(self.values[0])['name'] in get_weapons_names()): new_value = Weapon(**json.loads(self.values[0]))
+		if (json.loads(self.values[0])['name'] in Data.fetch_names('weapons')): new_value = Weapon(**json.loads(self.values[0]))
 		else: new_value = Armor(**json.loads(self.values[0]))
 
 		new_equiptment = self.user.equiptment

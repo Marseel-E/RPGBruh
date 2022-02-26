@@ -7,7 +7,7 @@ from typing import Literal
 import discord
 
 from database import get_user
-from utils import get_weapons_names, get_armor_names, Weapon, Armor, Default
+from utils import Data, Weapon, Armor, Default
 
 
 class Dev_slash(Cog):
@@ -22,8 +22,8 @@ class Dev_slash(Cog):
 	@is_owner()
 	async def give_item(self, ctx : Context, item_name : str, user : DUser = None):
 		items_list = []
-		[items_list.append(item) for item in get_weapons_names()]
-		[items_list.append(item) for item in get_armor_names()]
+		[items_list.append(item) for item in Data.fetch_names('weapons')]
+		[items_list.append(item) for item in Data.fetch_names('armor')]
 
 		if not (item_name in items_list):
 			await ctx.send(f"{item_name} ain't shit bruh", ephemeral=True)
