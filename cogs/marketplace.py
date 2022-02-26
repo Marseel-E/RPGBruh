@@ -122,7 +122,7 @@ class Marketplace(Cog):
 		self.bot = bot
 
 
-	@slash_command(guild_id=Default.test_server)
+	@slash_command()
 	async def marketplace(self, ctx : Context):
 		embed = Embed(title="Marketplace", color=Color.default)
 

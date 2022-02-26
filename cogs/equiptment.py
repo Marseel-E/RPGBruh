@@ -87,7 +87,7 @@ class Equiptment(Cog):
 		self.bot = bot
 
 
-	@slash_command(guild_id=Default.test_server)
+	@slash_command()
 	async def equiptment(self, ctx : Context):
 		user = get_user(ctx.author.id)
 		embed = Embed(title="Equiptment", color=Color.default)

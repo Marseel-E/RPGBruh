@@ -15,7 +15,7 @@ class Mine(Cog):
 		self.bot = bot
 
 
-	@slash_command(guild_id=Default.test_server)
+	@slash_command()
 	async def mine(self, ctx : Context):
 		user = get_user(ctx.author.id)
 

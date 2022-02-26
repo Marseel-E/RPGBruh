@@ -51,7 +51,7 @@ class Dual_slash(Cog):
 		self.bot = bot
 
 
-	@slash_command(guild_id=Default.test_server)
+	@slash_command()
 	async def dual(self, ctx : Context, member : DUser, bet : int = 0):
 		player = get_user(ctx.author.id)
 		opponent = get_user(member.id)

@@ -10,7 +10,7 @@ class Profile_slash(Cog):
 		self.bot = bot
 
 
-	@slash_command(guild_id=Default.test_server)
+	@slash_command()
 	@describe(member="View another user's profile")
 	async def profile(self, ctx : Context, member : discord.User = None):
 		discord_user = ctx.author if not member else member

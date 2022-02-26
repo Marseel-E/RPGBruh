@@ -18,7 +18,7 @@ class Dev_slash(Cog):
 		await ctx.send(error, ephemeral=True)
 
 
-	@slash_command(guild_id=Default.test_server, description="Developer only command")
+	@slash_command(, description="Developer only command")
 	@is_owner()
 	async def give_item(self, ctx : Context, item_name : str, user : DUser = None):
 		items_list = []
@@ -66,7 +66,7 @@ class Dev_slash(Cog):
 
 
 	# FIX
-	@slash_command(guild_id=Default.test_server)
+	@slash_command()
 	@is_owner()
 	async def update(self, ctx : Context, member : discord.User = None, page : Literal[1, 2, 3] = 1):
 		discord_user = ctx.author if not (member) else member
