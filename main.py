@@ -11,7 +11,7 @@ from utils import Icon
 
 
 intents = Intents.default()
-bot = Bot(command_prefix=".", case_sensitive=True, intents=intents)
+bot = Bot(command_prefix="r-", case_sensitive=True, intents=intents)
 
 @bot.event
 async def on_ready():
