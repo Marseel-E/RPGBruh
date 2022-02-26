@@ -44,4 +44,4 @@ if __name__ == ('__main__'):
 			except Exception as e: print(f"[Main]: Failed to load '{file[:-3]}': {e}\n")
 			else: print(f"[{file[:-3]}]: Loaded..\n")
 
-bot.run(os.environ.get("DEV_TOKEN"))
+bot.run(os.environ.get("TOKEN"))
