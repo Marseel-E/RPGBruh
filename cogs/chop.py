@@ -51,7 +51,7 @@ class Chop(Cog):
 				amount = random_amount
 
 				if item.name == "wood":
-					amount = (random_amount + item.amount)
+					amount += item.amount
 					new_inv.pop(new_inv.index(item))
 					break
 

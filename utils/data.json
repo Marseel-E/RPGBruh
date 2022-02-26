@@ -19,15 +19,15 @@
 			"wood": 25,
 			"gold": 25
 		}},
-		"ruby_sword": {"icon": ":paperclip:", "power": [10,70], "recipe": {
+		"ruby_sword": {"icon": "<:ruby_sword:947224194750480384>", "power": [10,70], "recipe": {
 			"wood": 25,
 			"ruby": 25
 		}},
-		"sapphire_sword": {"icon": ":paperclip:", "power": [10,80], "recipe": {
+		"sapphire_sword": {"icon": "<:sapphire_sword:947224469200572496>", "power": [10,80], "recipe": {
 			"wood": 25,
 			"sapphire": 25
 		}},
-		"emerald_sword": {"icon": ":paperclip:", "power": [10,100], "recipe": {
+		"emerald_sword": {"icon": "<:emerald_sword:947224066534834267>", "power": [10,100], "recipe": {
 			"wood": 25,
 			"emerald": 25
 		}},
@@ -43,23 +43,23 @@
 			"wood": 50,
 			"copper": 50
 		}},
-		"iron_bow": {"icon": ":paperclip:", "power": [25,125], "recipe": {
+		"iron_bow": {"icon": "<:iron_bow:947225315179118612>", "power": [25,125], "recipe": {
 			"wood": 50,
 			"iron": 50
 		}},
-		"gold_bow": {"icon": ":paperclip:", "power": [25,150], "recipe": {
+		"gold_bow": {"icon": "<:gold_bow:947225459182157846>", "power": [25,150], "recipe": {
 			"wood": 50,
 			"gold": 50
 		}},
-		"ruby_bow": {"icon": ":paperclip:", "power": [25,175], "recipe": {
+		"ruby_bow": {"icon": "<:ruby_bow:947225364562866176>", "power": [25,175], "recipe": {
 			"wood": 50,
 			"ruby": 50
 		}},
-		"sapphire_bow": {"icon": ":paperclip:", "power": [25,200], "recipe": {
+		"sapphire_bow": {"icon": "<:sapphire_bow:947225246459625557>", "power": [25,200], "recipe": {
 			"wood": 50,
 			"sapphire": 50
 		}},
-		"emerald_bow": {"icon": ":paperclip:", "power": [25,225], "recipe": {
+		"emerald_bow": {"icon": "<:emerald_bow:947225158169526293>", "power": [25,225], "recipe": {
 			"wood": 50,
 			"emerald": 50
 		}},
@@ -75,7 +75,7 @@
 			"wood": 75,
 			"copper": 75
 		}},
-		"iron_spear": {"icon": ":paperclip:", "power": [50,250], "recipe": {
+		"iron_spear": {"icon": "<:iron_spear:947225056373796874>", "power": [50,250], "recipe": {
 			"wood": 75,
 			"iron": 75
 		}},
@@ -83,15 +83,15 @@
 			"wood": 75,
 			"gold": 75
 		}},
-		"ruby_spear": {"icon": ":paperclip:", "power": [50,350], "recipe": {
+		"ruby_spear": {"icon": "<:ruby_spear:947224640948940862>", "power": [50,350], "recipe": {
 			"wood": 75,
 			"ruby": 75
 		}},
-		"sapphire_spear": {"icon": ":paperclip:", "power": [50,400], "recipe": {
+		"sapphire_spear": {"icon": "<:sapphire_axe:947225613368967169>", "power": [50,400], "recipe": {
 			"wood": 75,
 			"sapphire": 75
 		}},
-		"emerald_spear": {"icon": ":paperclip:", "power": [50,450], "recipe": {
+		"emerald_spear": {"icon": "<:emerald_spear:947224550364577842>", "power": [50,450], "recipe": {
 			"wood": 75,
 			"emerald": 75
 		}},
@@ -99,7 +99,7 @@
 		"wood_axe": {"icon": ":paperclip:", "power": [100,200], "recipe": {
 			"wood": 100
 		}},
-		"stone_axe": {"icon": ":paperclip:", "power": [100,300], "recipe": {
+		"stone_axe": {"icon": "<:stone_axe:947225822203351040>", "power": [100,300], "recipe": {
 			"wood": 100,
 			"stone": 100
 		}},
@@ -107,19 +107,19 @@
 			"wood": 100,
 			"copper": 100
 		}},
-		"iron_axe": {"icon": ":paperclip:", "power": [100,500], "recipe": {
+		"iron_axe": {"icon": "<:iron_axe:947225920060653590>", "power": [100,500], "recipe": {
 			"wood": 100,
 			"iron": 100
 		}},
-		"gold_axe": {"icon": ":paperclip:", "power": [100,600], "recipe": {
+		"gold_axe": {"icon": "<:gold_axe:947225749310558248>", "power": [100,600], "recipe": {
 			"wood": 100,
 			"gold": 100
 		}},
-		"ruby_axe": {"icon": ":paperclip:", "power": [100,700], "recipe": {
+		"ruby_axe": {"icon": "<:ruby_axe:947225566455660606>", "power": [100,700], "recipe": {
 			"wood": 100,
 			"ruby": 100
 		}},
-		"sapphire_axe": {"icon": ":paperclip:", "power": [100,800], "recipe": {
+		"sapphire_axe": {"icon": "<:sapphire_axe:947225613368967169>", "power": [100,800], "recipe": {
 			"wood": 100,
 			"sapphire": 100
 		}},
@@ -217,14 +217,14 @@
 		"bread": ":paperclip:",
 		"water": ":paperclip:",
 
-		"wood": ":paperclip:",
+		"wood": ":wood:",
 		
-		"stone": ":paperclip:",
-		"copper": ":paperclip:",
-		"iron": ":paperclip:",
-		"gold": ":paperclip:",
-		"ruby": ":paperclip:",
-		"sapphire": ":paperclip:",
-		"emerald": ":paperclip:"
+		"stone": "<:stone:947227108424429649>",
+		"copper": "<:copper:947227016242036777>",
+		"iron": "<:iron:947227149310496838>",
+		"gold": "<:gold:947227068289126420>",
+		"ruby": "<:ruby:947226906867171409>",
+		"sapphire": "<:sapphire:947226957844721774>",
+		"emerald": "<:emerald:947226854744535111>"
 	}
 }

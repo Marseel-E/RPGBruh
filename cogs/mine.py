@@ -57,11 +57,12 @@ class Mine(Cog):
 		new_inv = user.inventory
 		for ore in ores:
 			random_amount = round(randint(5,15) / (list(ores_data.keys()).index(ore) + 1))
+			amount = random_amount
 
 			if (len(user.inventory) >= 1):
 				for item in user.inventory:
 					if item.name == ore:
-						amount = (random_amount + item.amount)
+						amount += item.amount
 						new_inv.pop(new_inv.index(item))
 						break
 

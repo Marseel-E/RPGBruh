@@ -17,6 +17,16 @@ class Developer(Cog):
 		return (await self.bot.is_owner(ctx.author))
 
 
+	@command(aliases=['sc'])
+	async def skip_cooldown(self, ctx, member : Optional[discord.User] = None):
+		discord_user = ctx.author or member
+		user = get_user(discord_user.id)
+
+		user.update(mine_cooldown=datetime.utcnow(), chop_cooldown=datetime.utcnow())
+
+		await ctx.send(f"Reseted cooldowns for `{discord_user}`", delete_after=15)
+
+
 	@command(aliases=['few'])
 	async def force_equip_weapon(self, ctx, weapon : str, rarity : str, power : int, health : Optional[int] = 100, member : Optional[discord.User] = None):
 		if not (weapon in Data.fetch_names('weapons')):
