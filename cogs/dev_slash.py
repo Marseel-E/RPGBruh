@@ -18,7 +18,7 @@ class Dev_slash(Cog):
 		await ctx.send(error, ephemeral=True)
 
 
-	@slash_command(, description="Developer only command")
+	@slash_command(description="Developer only command")
 	@is_owner()
 	async def give_item(self, ctx : Context, item_name : str, user : DUser = None):
 		items_list = []
