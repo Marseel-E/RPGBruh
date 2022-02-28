@@ -37,12 +37,12 @@ async def on_message(message):
 	await bot.process_commands(message)
 
 
- 
-bot​.​topggpy​ ​=​ ​topgg​.​DBLClient​(​bot​, ​"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk0NzI0MjI2NDQ4MzIwOTI2OSIsImJvdCI6dHJ1ZSwiaWF0IjoxNjQ2MDY1NDEzfQ.twRXvKE0XxDNVtAb19vWQCnuO3IwIB1BLFs40pzjobU", ​autopost​=​True​, ​post_shard_count​=​False​) 
-  
-​@​bot​.​event 
-​async​ ​def​ ​on_autopost_success​(): 
-	​print​(​f"Posted server count (​{​bot​.​topggpy​.​guild_count​}​), shard count (​{​bot​.​shard_count​}​)"​)
+
+bot.topggpy = topgg.DBLClient(bot, os.environ.get("TOPGG_TOKEN"), autopost=True, post_shard_count=False)
+
+@bot.event
+async def on_autopost_success():
+	print(f"Posted server count ({bot.topggpy.guild_count}), shard count ({bot.shard_count})")
 
 
 if __name__ == ('__main__'):
