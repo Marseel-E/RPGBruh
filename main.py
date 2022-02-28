@@ -1,7 +1,7 @@
 from discord import Intents, Status, Game
 from slash_util import Bot
 from random import randint
-import os
+import os, topgg
 
 from dotenv import load_dotenv
 load_dotenv('.env')
@@ -35,6 +35,14 @@ async def on_message(message):
 			await mesasge.channel.send(f"{Icon.level_up} LEVEL UP! {Icon.level_up}\n{Icon.level} Level: {user.level}\n{Icon.coins} Coins: {user.coins}\n{Icon.health} Health: {user.health}\n{Icon.strength} Strength: {user.strength}\n{Icon.defence} Defence: {user.defence}")
 
 	await bot.process_commands(message)
+
+
+ 
+ ​bot​.​topggpy​ ​=​ ​topgg​.​DBLClient​(​bot​, ​"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk0NzI0MjI2NDQ4MzIwOTI2OSIsImJvdCI6dHJ1ZSwiaWF0IjoxNjQ2MDY1NDEzfQ.twRXvKE0XxDNVtAb19vWQCnuO3IwIB1BLFs40pzjobU", ​autopost​=​True​, ​post_shard_count​=​False​) 
+  
+ ​@​bot​.​event 
+ ​async​ ​def​ ​on_autopost_success​(): 
+ ​    ​print​(​f"Posted server count (​{​bot​.​topggpy​.​guild_count​}​), shard count (​{​bot​.​shard_count​}​)"​)
 
 
 if __name__ == ('__main__'):
