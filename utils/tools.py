@@ -22,7 +22,7 @@ class _Icon:
 		self.increase = "<:increase:945438059644731442>"
 		self.decrease = "<:decrease:945438157929852948>"
 		self.level_up = ":tada:"
-		self.coins = ":coin:"
+		self.coins = "<:rpgbruh_coin:947269863045484555>"
 		self.health = ":drop_of_blood:"
 		self.level = ":beginner:"
 		self.strength = ":muscle:"
