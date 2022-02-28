@@ -38,11 +38,11 @@ async def on_message(message):
 
 
 
-bot.topggpy = topgg.DBLClient(bot, os.environ.get("TOPGG_TOKEN"), autopost=True, post_shard_count=False)
+bot.topggpy = topgg.DBLClient(bot, os.environ.get("TOPGG_TOKEN"), autopost=True, post_shard_count=False)
 
 @bot.event
 async def on_autopost_success():
-	print(f"Posted server count ({bot.topggpy.guild_count}), shard count ({bot.shard_count})")
+	print(f"Posted server count ({bot.topggpy.guild_count}), shard count ({bot.shard_count})")
 
 
 if __name__ == ('__main__'):
