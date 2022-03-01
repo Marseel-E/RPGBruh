@@ -17,7 +17,7 @@ bot = Bot(command_prefix="r-", case_sensitive=True, intents=intents, help_comman
 @bot.event
 async def on_ready():
 	print("running")
-	await bot.change_presence(status=Status.online, activity=Game("RPGBruh.exe"))
+	await bot.change_presence(status=Status.online, activity=Game("r-help"))
 
 
 @bot.event
