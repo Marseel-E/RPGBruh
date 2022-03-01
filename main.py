@@ -1,4 +1,5 @@
 from discord import Intents, Status, Game
+from discord.ext import commands
 from slash_util import Bot
 from random import randint
 import os, topgg
