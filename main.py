@@ -11,7 +11,7 @@ from utils import Icon
 
 
 intents = Intents.default()
-bot = Bot(command_prefix="r-", case_sensitive=True, intents=intents)
+bot = Bot(command_prefix="r-", case_sensitive=True, intents=intents, help_command=None)
 
 @bot.event
 async def on_ready():
@@ -23,6 +23,8 @@ async def on_ready():
 async def on_message(message):
 	if (message.author.bot): return
 
+	if bot.user.mentioned_in(message): await message.channel.send("Type `/` and all of RPGBruh's slash commands should appear.\nIf they don't then you have to reinvite the bot, you can do that by pressing on the bot and clicking " + '"Add To Server"' + " and selecting your server. If you're not the server owner please let them know."); return
+	
 	users = fetch_users()
 	if str(message.author.id) in users:
 		user = get_user(message.author.id)
@@ -43,6 +45,12 @@ bot.topggpy = topgg.DBLClient(bot, os.environ.get("TOPGG_TOKEN"), autopost=True,
 @bot.event
 async def on_autopost_success():
 	print(f"Posted server count ({bot.topggpy.guild_count}), shard count ({bot.shard_count})")
+
+
+bot.remove_command("help")
+@bot.command(aliases=["?", "h"])
+async def help(ctx):
+    await ctx.send("Type `/` and all of RPGBruh's slash commands should appear.\nIf they don't then you have to reinvite the bot, you can do that by pressing on the bot and clicking " + '"Add To Server"' + " and selecting your server. If you're not the server owner please let them know.")
 
 
 if __name__ == ('__main__'):
