@@ -4,7 +4,7 @@ from slash_util import Cog, slash_command, Context
 import json
 
 from database import get_user
-from utils import Data, Default, Color, Icon
+from utils import Data, Default, Color, Icon, Paginator, Weapon, Armor
 
 
 class Use_select(Select):
@@ -12,7 +12,7 @@ class Use_select(Select):
 		self.user = user
 		self.items = items
 
-		super().__init__(placeholder="Use", min_values=1, max_values=1, options=self.items)
+		super().__init__(placeholder="Use", min_values=1, max_values=1, options=self.items, row=2)
 
 	async def callback(self, interaction : Interaction):
 		if (json.loads(self.values[0])['name'] in Data.fetch_names('weapons')):
@@ -36,25 +36,12 @@ class Use_select(Select):
 
 		self.view.stop()
 
-class Use(View):
-	def __init__(self, author, items):
-		super().__init__()
-		self.author = author
-		self.items = items
-
-		self.add_item(Use_select(self.author, self.items))
-
-	async def interaction_check(self, interaction: Interaction):
-		return (str(interaction.user.id) == self.author.ID)
-
-	async def on_timeout(self): self.stop()
-
 
 class Unequip_weapon(Button):
 	def __init__(self, user):
 		self.user = user
 
-		super().__init__(label="Unequip weapon", style=ButtonStyle.red)
+		super().__init__(label="Unequip weapon", style=ButtonStyle.red, row=3)
 
 	async def callback(self, interaction : Interaction):
 		weapon = self.user.weapon
@@ -74,7 +61,7 @@ class Unequip_armor(Button):
 	def __init__(self, user):
 		self.user = user
 
-		super().__init__(label="Unequip armor", style=ButtonStyle.red)
+		super().__init__(label="Unequip armor", style=ButtonStyle.red, row=3)
 
 	async def callback(self, interaction : Interaction):
 		await interaction.response.send_message("soon", ephemeral=True)
@@ -90,34 +77,32 @@ class Equiptment(Cog):
 	@slash_command()
 	async def equiptment(self, ctx : Context):
 		user = get_user(ctx.author.id)
-		embed = Embed(title="Equiptment", color=Color.default)
 
-		if (len(user.equiptment) > 0):
-			for item in user.equiptment:
-				if ('power' in item.keys()): item_stats = f"```\nHealth: {item['health']}\nPower: {item['power']}\n```" 
-				if ('defence' in item.keys()): item_stats = f"```\nHealth: {item['health']}\nDefence: {item['defence']}\n```"
-
-				embed.add_field(name=f"{item['icon']} {item['name']} `({item['rarity']})`", value=item_stats)
-		
-		else: embed.description = "empty"
-
-		items = []
-		if (embed.description != "empty"):
-			for item in user.equiptment:
-				items.append(SelectOption(label=item['name'], description=item['rarity'], value=json.dumps(item)))
-
-		if not (items):
-			await ctx.send(embed=embed)
+		if (len(user.equiptment) <= 0):
+			await ctx.send("empty", ephemeral=True)
 			return
-			
-		view = Use(user, items)
 
-		if (user.weapon): view.add_item(Unequip_weapon(user))
-		if (user.armor): view.add_item(Unequip_armor(user))
+		pages = []; items = []
+		embed = Embed(title="Equiptment", color=Color.default)
+		for i, item in enumerate(user.equiptment):
+			items.append(SelectOption(label=item['name'], description=item['rarity'], value=json.dumps(item)))
 
-		msg = await ctx.send(embed=embed, view=view)
-		await view.wait()
-		await msg.delete()
+			if ('power' in item.keys()): item_stats = f"```\nHealth: {item['health']}\nPower: {item['power']}\n```" 
+			if ('defence' in item.keys()): item_stats = f"```\nHealth: {item['health']}\nDefence: {item['defence']}\n```"
+
+			embed.add_field(name=f"{item['icon']} {item['name']} `({item['rarity']})`", value=item_stats, inline=True)
+
+			if ((i + 1 in [5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100]) or (i + 1 >= len(user.equiptment))):
+				pages.append(embed)
+				embed = Embed(title="Equiptment", color=Color.default)
+
+		assert (pages and items)
+
+		custom_buttons = [Use_select(user, items)]
+		if (user.weapon): custom_buttons.append(Unequip_weapon(user))
+		if (user.armor): custom_buttons.append(Unequip_armor(user))
+
+		await Paginator(ctx, pages, custom_buttons).start(True)
 
 
 def setup(bot):

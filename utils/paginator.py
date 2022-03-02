@@ -1,6 +1,6 @@
 from discord import Interaction, SelectOption, User, ButtonStyle
 from discord.ui import View, select, Select, button, Button
-from typing import Optional, List
+from typing import Optional, List, Union
 from slash_util import Context
 
 
@@ -69,9 +69,10 @@ class _view(View):
 
 
 class Paginator:
-	def __init__(self, ctx: Context, pages: list):
+	def __init__(self, ctx: Context, pages: list, custom_children: Optional[List[Union[Button, Select]]] = []):
 		self.ctx = ctx
 		self.pages = pages
+		self.custom_children = custom_children
 
 
 	async def start(self, embeded: Optional[bool] = False):
@@ -87,6 +88,10 @@ class Paginator:
 			options.append(SelectOption(label=f"Page {index+1}", value=index))
 
 		view.add_item(_select(options))
+
+		if (len(self.custom_children) > 0):
+			for child in self.custom_children:
+				view.add_item(child)
 
 		kwargs = {'content': self.pages[view.current_page]} if not (embeded) else {'embed': self.pages[view.current_page]}
 		kwargs['view'] = view

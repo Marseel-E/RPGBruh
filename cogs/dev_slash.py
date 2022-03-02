@@ -44,7 +44,7 @@ class Dev_slash(Cog):
 			return
 		else: data = modal.response
 
-		if (item_name in get_weapons_names()):
+		if (item_name in Data.fetch_names('weapons')):
 			data.pop('defence')
 			item = Weapon(name=item_name, **data)
 
