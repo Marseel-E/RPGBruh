@@ -4,106 +4,95 @@ from typing import Optional, List
 from slash_util import Context
 
 
-current_page = 0
-
-
 class _select(Select):
 	def __init__(self, pages: List[str]):
 		super().__init__(placeholder="Quick navigation", min_values=1, max_values=1, options=pages, row=0)
 
 
 	async def callback(self, interaction: Interaction):
-		global current_page
-		current_page = int(self.values[0])
+		self.view.current_page = int(self.values[0])
 
-		self.view.stop()
+		await self.view.update_children(interaction)
+
 
 class _view(View):
-	def __init__(self, author: User, pages: List[SelectOption]):
+	def __init__(self, author: User, pages: List[SelectOption], embeded: bool):
 		super().__init__()
 		self.author = author
 		self.pages = pages
-		self.quit = False
+		self.embeded = embeded
+
+		self.current_page = 0
 
 	async def interaction_check(self, interaction: Interaction) -> bool:
 		return (interaction.user.id == self.author.id)
 
-	async def on_timeout(self):
-		self.quit = True
+
+	async def update_children(self, interaction: Interaction):
+		self.next.disabled = True if (self.current_page + 1 == len(self.pages)) else False
+		self.previous.disabled = True if (self.current_page <= 0) else False
+
+		kwargs = {'content': self.pages[self.current_page]} if not (self.embeded) else {'embed': self.pages[self.current_page]}
+		kwargs['view'] = self
+
+		await interaction.response.edit_message(**kwargs)
 
 
 	@button(label="◀◀", style=ButtonStyle.gray, row=1)
 	async def first(self, button: Button, interaction: Interaction):
-		global current_page
-		current_page = 0
+		self.current_page = 0
 
-		self.stop()
-
+		await self.update_children(interaction)
 
 	@button(label="◀", style=ButtonStyle.blurple, row=1)
 	async def previous(self, button: Button, interaction: Interaction):
-		global current_page
-		current_page -= 1
+		self.current_page -= 1
 
-		self.stop()
+		await self.update_children(interaction)
 
 	@button(label="▶", style=ButtonStyle.blurple, row=1)
 	async def next(self, button: Button, interaction: Interaction):
-		global current_page
-		current_page += 1
+		self.current_page += 1
 
-		self.stop()
+		await self.update_children(interaction)
 
 	@button(label="▶▶", style=ButtonStyle.gray, row=1)
 	async def last(self, button: Button, interaction: Interaction):
-		global current_page
-		current_page = len(self.pages) - 1
+		self.current_page = len(self.pages) - 1
 
-		self.stop()
+		await self.update_children(interaction)
+
 
 	@button(label="Quit", style=ButtonStyle.red, row=1)
 	async def quit(self, button: Button, interaction: Interaction):
-		self.quit = True
-
 		self.stop()
 
 
 class Paginator:
-	def __init__(self, ctx: Context, pages: list, current_page: Optional[int] = 0):
+	def __init__(self, ctx: Context, pages: list):
 		self.ctx = ctx
 		self.pages = pages
-		self.current_page = current_page
 
 
 	async def start(self, embeded: Optional[bool] = False):
 		assert (self.pages)
 
-		global current_page
-		current_page = self.current_page or current_page
+		view = _view(self.ctx.author, self.pages, embeded)
 
-		msg = await self.ctx.send("Loading...")
+		view.previous.disabled = True if (view.current_page <= 0) else False
+		view.next.disabled = True if (view.current_page + 1 >= len(self.pages)) else False
 
-		while True:
-			view = _view(self.ctx.author, self.pages)
+		options = []
+		for index, page in enumerate(self.pages):
+			options.append(SelectOption(label=f"Page {index+1}", value=index))
 
-			minus_disabled = True if (current_page <= 0) else False
-			plus_disabled = True if (current_page + 1 >= len(self.pages)) else False
+		view.add_item(_select(options))
 
-			view.first.disabled = minus_disabled
-			view.previous.disabled = minus_disabled
-			view.last.disabled = plus_disabled
-			view.next.disabled = plus_disabled
+		kwargs = {'content': self.pages[view.current_page]} if not (embeded) else {'embed': self.pages[view.current_page]}
+		kwargs['view'] = view
 
-			options = []
-			for index, page in enumerate(self.pages):
-				options.append(SelectOption(label=index+1, value=index))
+		msg = await self.ctx.send(**kwargs)
 
-			view.add_item(_select(options))
-
-			await msg.edit(content=self.pages[current_page], view=view) if not (embeded) else await msg.edit(content=""
-				, embed=self.pages[current_page], view=view)
-			await view.wait()
-
-			if (view.quit): break
+		await view.wait()
 
 		await msg.delete()
