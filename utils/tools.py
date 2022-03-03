@@ -13,6 +13,8 @@ Color = _Color()
 class _Default:
 	def __init__(self):
 		self.test_server = 879153063036858428
+		self.support_server_link = "https://discord.gg/wEyWZWYMSm"
+		self.support_server = f"[Support Server]({self.support_server_link})"
 
 Default = _Default()
 

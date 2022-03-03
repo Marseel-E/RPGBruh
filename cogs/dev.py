@@ -17,6 +17,13 @@ class Developer(Cog):
 		return (await self.bot.is_owner(ctx.author))
 
 
+	@command()
+	async def dm(self, ctx, member: discord.User, message: str, embeded: Optional[bool] = False):
+		kwargs = {'content': f"{message}\n\nSupport Server: <{Default.support_server_link}>"} if not (embeded) else {'embed': discord.Embed(title="RPGBruh", description=f"{message}\n\n{Default.support_server}")}
+
+		await member.send(**kwargs)
+
+
 	@command(aliases=['sc'])
 	async def skip_cooldown(self, ctx, member : Optional[discord.User] = None):
 		discord_user = ctx.author or member
