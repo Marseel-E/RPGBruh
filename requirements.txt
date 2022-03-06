@@ -1,6 +1,6 @@
 redis
 redis-om
-git+https://github.com/Rapptz/discord.py@437d451d4e48a255ecdb450a04c89ae96c93ba2f
+git+https://github.com/Rapptz/discord.py@5439a67056caa293b6218c56b1c84ab39f34b9fb
 git+https://github.com/XuaTheGrate/slash_util
 python-dotenv
 humanize
