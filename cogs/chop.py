@@ -45,12 +45,10 @@ class Chop(Cog):
 		new_inv = user.inventory
 
 		random_amount = randint(5,15)
-		amount = 0
+		amount = random_amount
 
 		if (len(user.inventory) >= 1):
 			for item in user.inventory:
-				amount = random_amount
-
 				if item.name == "wood":
 					amount += item.amount
 					new_inv.pop(new_inv.index(item))
