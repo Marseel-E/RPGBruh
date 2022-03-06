@@ -45,6 +45,7 @@ class Chop(Cog):
 		new_inv = user.inventory
 
 		random_amount = randint(5,15)
+		amount = 0
 
 		if (len(user.inventory) >= 1):
 			for item in user.inventory:
