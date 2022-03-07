@@ -14,7 +14,7 @@ class _inv(Cog):
 	async def inventory(self, ctx: Context, member: DUser = None):
 		discord_user = ctx.author if not (member) else member
 
-		if ((member) and (str(discord_user.id) in fetch_users())):
+		if ((member) and not (str(discord_user.id) in fetch_users())):
 			await ctx.send("empty", ephemeral=True)
 			return
 
